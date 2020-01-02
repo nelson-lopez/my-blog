@@ -1,25 +1,37 @@
 ---
 title: How I learned to Stop Worrying and Love Docker
 date: "2020-01-01T22:12:03.284Z"
-description: "Sometimes we just need to forget"
+description: "Sometimes it's a lot easier than it looks"
 ---
 
 You've done it. You successfully built your backend!
 This is the part where you tell yourself to forget about how you _built_ the damn thing and focus on the UI.
 
-In reality, the mentality of taking anything for _granted_ with a build process is a promise waiting to be broken. In the case of going down the [happy path](https://en.wikipedia.org/wiki/Happy_path) it becomes easy to forget that your package manager is out of date, that you switched to Node 9.x via NVM that _one_ time, or that you're on a completely different machine now. But everything is okay right now because you run your script and the server starts and **now** you have working code....
+In reality, the mentality of taking anything for _granted_ with a build process is a promise waiting to be broken. In the case of going down the [happy path](https://en.wikipedia.org/wiki/Happy_path) it becomes easy to forget that your package manager is out of date, that you switched to Node 9.x via NVM that _one_ time, or that you're on a completely different machine now.
 
-- How do you avoid worrying about a producing a production build environment while working on your local machine?
+Some questions you might be asking yourself when going back to an old project.
 
-- How do you ensure that anyone working with you is on the same environment?
+- How do I avoid worrying about a reproducing a production build environment again when working on local?
 
-- Can you **isolate** your build issues and resolve them before sharing code?
+- Can I **isolate** my build issues and resolve them before sharing code?
+
+- How do I ensure that anyone working with me is on the same environment when they pull/fork?
 
 These might be doubts in your head before you take that next step forward before pushing your code but tools such as [Docker](<https://en.wikipedia.org/wiki/Docker_(software)>) can abstract most of that for you.
 
-By the end of this we should be able to create a database, generate a schema, seed a database, run our API, and run PGAdmin through a single Docker command.
+By the end of this we should be able to create a database, generate a schema, seed the DB, initialize our server, and run PGAdmin to connect it all through a single Docker command.
 
-Now this is all great but how do we go about automating this backend stuff with Docker?
+Sounds pretty neat so what do you need to know?
+
+First thing that you're going to want to do is to [install docker](https://docs.docker.com/install/). Your instructions might defer depending on which OS you're on. Once that's done, in your terminal type:
+
+`docker version`
+
+you should see something like this:
+
+![docker-version](./docker-version.png)
+
+Docker itself is a broad topic to wrap your head around so for the sake of brevity and the scope of this post we'll be distilling things down to: [images](https://docs.docker.com/engine/reference/commandline/images/), [Dockerfiles](https://docs.docker.com/engine/reference/builder/) and [docker-compose](https://docs.docker.com/compose/).
 
 <!--
 So how do you avoid running into these issues? Forget that, how do you ensure that anyone working with you can avoid these issues? The problem with environments is that they are _broad_ problems and developers seek **isolation**.
