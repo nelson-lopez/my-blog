@@ -33,18 +33,18 @@ you should see something like this:
 
 Docker itself is a broad topic to properly cover so for the sake of brevity and the scope of this post we'll be distilling things down to: [images](https://docs.docker.com/engine/reference/commandline/images/), [Dockerfiles](https://docs.docker.com/engine/reference/builder/) and [docker-compose](https://docs.docker.com/compose/).
 
-For a higher level overview on Docker here's an excellent [article](https://towardsdatascience.com/learn-enough-docker-to-be-useful-b7ba70caeb4b) by [Jeff Hale](https://twitter.com/discdiver) that helps abstract some of the notions about Docker.
+For a higher level overview on Docker here's an excellent [article](https://towardsdatascience.com/learn-enough-docker-to-be-useful-b7ba70caeb4b) by [Jeff Hale](https://twitter.com/discdiver) that helps abstract a few notions about Docker.
 
-## So whats image anyway?
+## So whats an image anyway?
 
-The easiest way to understand what an image is, is to go ahead and type `docker run hello-world` in your terminal. You should be prompted with the following:
+**In short an image is a file whose sole purpose is to carry dependencies and configurations for a program to run.**
 
-![hello-world](./hello-world.png)
+The easiest way to understand what an image is, is by going ahead and _run_
+Enter: `docker run hello-world` in your terminal.
 
-Most of this is looks like useless information but in reality there's a couple of key concepts being handed to us here.
+If all goes well you should be given a feed of what might look like gibberish to you. However, they're some instructions on exactly how we're interacting with **images** within this prompt.
 
 ```
-To generate this message, Docker took the following steps:
  1. The Docker client contacted the Docker daemon.
  2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
     (amd64)
@@ -54,7 +54,32 @@ To generate this message, Docker took the following steps:
     to your terminal.
 ```
 
-<!--
-So how do you avoid running into these issues? Forget that, how do you ensure that anyone working with you can avoid these issues? The problem with environments is that they are _broad_ problems and developers seek **isolation**.
+![nod](./nod.gif)
 
-In this post I want to talk about Docker, a tool for breaking your app into small containers. -->
+_I know_... what in the world is a daemon?
+
+According to Wiki:
+
+> A daemon is a type of program on Unix-like operating systems that runs unobtrusively in the background, rather than under the direct control of a user, waiting to be activated by the occurance of a specific event or condition.
+
+Fascinating, great.
+
+So somewhere between hitting the enter key and the prompt this Docker daemon was running around doing all the dirty work for us and when it finished it returns a `hello-world`.
+
+If you run `docker ps -a` you should get something along the lines of
+
+| CONTAINER ID |    IMAGE    | COMMAND  |    CREATED     |          STATUS           | PORTS | NAMES   |
+| ------------ | :---------: | :------: | :------------: | :-----------------------: | :---: | ------- |
+| a0adf8a9dbe5 | hello-world | "/hello" | 23 minutes ago | Exited (0) 23 minutes ago |       | example |
+
+**Now** we know we have this `hello-world` image, inside a container, within our computer and we pulled it from this [_Docker Hub_](https://hub.docker.com/) place which kinda sounds like GitHub but for images. The sole purpose of this image is to print _"Hello from Docker"_.
+
+You might've noticed that before our _"Hello from Docker"_ we received a message of:
+
+```
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete
+```
+
+Docker is smart enough to check for any existing images before checking the Hub which is pretty nifty.
