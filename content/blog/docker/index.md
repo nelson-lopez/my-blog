@@ -21,9 +21,9 @@ These might be doubts in your head before you take that next step forward before
 
 By the end of this we should be able to create a database, generate a schema, seed the DB, initialize our server, and run PGAdmin to connect it all through a single Docker command.
 
-Sounds pretty neat so what do you need to know?
+**Sounds pretty neat so what do I need to know?**
 
-First thing that you're going to want to do is to [install docker](https://docs.docker.com/install/). Your instructions might defer depending on which OS you're on. Once that's done, in your terminal type:
+First thing that you're going to want to do is [install docker](https://docs.docker.com/install/). Your instructions might differ depending on which OS you're on. Once that's done, in your terminal type:
 
 `docker version`
 
@@ -31,7 +31,28 @@ you should see something like this:
 
 ![docker-version](./docker-version.png)
 
-Docker itself is a broad topic to wrap your head around so for the sake of brevity and the scope of this post we'll be distilling things down to: [images](https://docs.docker.com/engine/reference/commandline/images/), [Dockerfiles](https://docs.docker.com/engine/reference/builder/) and [docker-compose](https://docs.docker.com/compose/).
+Docker itself is a broad topic to properly cover so for the sake of brevity and the scope of this post we'll be distilling things down to: [images](https://docs.docker.com/engine/reference/commandline/images/), [Dockerfiles](https://docs.docker.com/engine/reference/builder/) and [docker-compose](https://docs.docker.com/compose/).
+
+For a higher level overview on Docker here's an excellent [article](https://towardsdatascience.com/learn-enough-docker-to-be-useful-b7ba70caeb4b) by [Jeff Hale](https://twitter.com/discdiver) that helps abstract some of the notions about Docker.
+
+## So whats image anyway?
+
+The easiest way to understand what an image is, is to go ahead and type `docker run hello-world` in your terminal. You should be prompted with the following:
+
+![hello-world](./hello-world.png)
+
+Most of this is looks like useless information but in reality there's a couple of key concepts being handed to us here.
+
+```
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+```
 
 <!--
 So how do you avoid running into these issues? Forget that, how do you ensure that anyone working with you can avoid these issues? The problem with environments is that they are _broad_ problems and developers seek **isolation**.
