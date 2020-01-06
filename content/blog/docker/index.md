@@ -1,6 +1,6 @@
 ---
 title: How I learned to Stop Worrying and Love Docker
-date: "2020-01-01T22:12:03.284Z"
+date: "2020-01-06T22:12:03.284Z"
 description: "Sometimes it's a lot easier than it looks"
 ---
 
