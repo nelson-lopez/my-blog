@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import "prismjs/themes/prism-coy.css"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
+import 'prismjs/plugins/command-line/prism-command-line.css'
 
 import { rhythm, scale } from "../utils/typography"
 
